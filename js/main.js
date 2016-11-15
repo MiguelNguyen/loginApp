@@ -25,16 +25,21 @@ function getInfo(){
 function newInfo(){
 	var newUser = document.getElementById('newUser').value
 	var newPass = document.getElementById('newPass').value
-	var userInfo = {
+	var combined = {
 		username: newUser,
 		password: newPass
 	}
 	for(i = 0; i < peopleObjects.length; i++){
-		if( newPass.length < 8) {
-			alert("username must be longer than 8 characters")
+		if( newUser == peopleObjects[i].username || newPass == peopleObjects[i].password) {
+			alert("username and password already taken")
+			return
+			} else if(newPass.length < 8) {
+				alert('password must be at least 8 characters')
+			return
 			}
-			else(peopleObjects.push(newUser, newPass))		
 	}
+	peopleObjects.push(combined)
+	console.log(peopleObjects)
 }
 
-
+// updated the logic to actually work
